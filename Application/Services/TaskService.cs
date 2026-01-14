@@ -64,8 +64,16 @@ namespace Servidor.Application.Services
                 Titulo = dto.Titulo,
                 Descricao = dto.Descricao,
                 StatusId = dto.StatusId,
-                DataDeConclusao = dto.DataDeConclusao
             };
+
+            if (dto.StatusId == 3 && !dto.DataDeConclusao.HasValue)
+            {
+                task.DataDeConclusao = DateTime.Now;
+            }
+            else
+            {
+                task.DataDeConclusao = dto.DataDeConclusao;
+            }
 
             await _repository.AddAsync(task);
         }
