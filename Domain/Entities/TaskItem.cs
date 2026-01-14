@@ -10,7 +10,6 @@ namespace Servidor.Domain.Entities
         public DateTime DataDeCriacao { get; set; }
         public DateTime? DataDeConclusao { get; set; }
 
-        [Column("Status")]
         public int StatusId { get; set; }
 
         public Status Status { get; set; }
