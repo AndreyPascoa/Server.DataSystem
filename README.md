@@ -60,6 +60,7 @@ dotnet test
 ## Observações
 
 * Use o **Insomnia** ou **Postman** para testar os endpoints da API.
+* Modelo de tabelas usado como no exeplo SQL/database.sql 
 * Certifique-se de que o banco de dados contém a tabela `Status` com os registros esperados:
 
 | Id | Nome        |
@@ -67,3 +68,4 @@ dotnet test
 | 1  | Pendente    |
 | 2  | EmProgresso |
 | 3  | Concluida   |
+
