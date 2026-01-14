@@ -80,18 +80,25 @@ namespace Servidor.Application.Services
                 return false;
 
             if (dto.DataDeConclusao.HasValue && dto.DataDeConclusao.Value < task.DataDeCriacao)
-            {
                 throw new ArgumentException("A data de conclusão não pode ser anterior à data de criação.");
-            }
 
             task.Titulo = dto.Titulo;
             task.Descricao = dto.Descricao;
             task.StatusId = dto.StatusId;
-            task.DataDeConclusao = dto.DataDeConclusao;
+
+            if (dto.StatusId == 3 && !dto.DataDeConclusao.HasValue)
+            {
+                task.DataDeConclusao = DateTime.Now;
+            }
+            else
+            {
+                task.DataDeConclusao = dto.DataDeConclusao;
+            }
 
             await _repository.UpdateAsync(task);
             return true;
         }
+
 
         public async Task<bool> DeleteAsync(int id)
         {
